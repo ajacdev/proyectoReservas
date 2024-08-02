@@ -77,7 +77,7 @@
 	<repositories>
         <repository>
             <id>td-maven-repo</id>
-            <url>http://localhost:8081/repository/td-maven-repo/</url>
+            <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -89,11 +89,11 @@
     <distributionManagement>
         <repository>
             <id>td-maven-repo</id>
-            <url>http://localhost:8081/repository/td-maven-repo/</url>
+            <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
         </repository>
         <snapshotRepository>
             <id>td-maven-repo</id>
-            <url>http://localhost:8081/repository/td-maven-repo/</url>
+            <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
         </snapshotRepository>
     </distributionManagement>
 
