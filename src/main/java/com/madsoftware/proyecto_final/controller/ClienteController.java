@@ -1,7 +1,7 @@
-package com.example.springbootdemo.controller;
+package com.madsoftware.proyecto_final.controller;
 
-import com.example.springbootdemo.model.Cliente;
-import com.example.springbootdemo.repository.ClienteRepository;
+import com.madsoftware.proyecto_final.model.Cliente;
+import com.madsoftware.proyecto_final.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

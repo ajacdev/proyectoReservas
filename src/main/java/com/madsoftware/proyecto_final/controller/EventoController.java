@@ -1,7 +1,7 @@
-package com.example.springbootdemo.controller;
+package com.madsoftware.proyecto_final.controller;
 
-import com.example.springbootdemo.model.Evento;
-import com.example.springbootdemo.repository.EventoRepository;
+import com.madsoftware.proyecto_final.model.Evento;
+import com.madsoftware.proyecto_final.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

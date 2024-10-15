@@ -1,4 +1,4 @@
-package com.example.springbootdemo.model;
+package com.madsoftware.proyecto_final.model;
 
 import javax.persistence.*;
 import java.util.Set;
