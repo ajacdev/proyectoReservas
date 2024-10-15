@@ -1,9 +1,9 @@
-package com.example.springbootdemo.controller;
+package com.madsoftware.proyecto_final.controller;
 
-import com.example.springbootdemo.model.Reserva;
-import com.example.springbootdemo.repository.ClienteRepository;
-import com.example.springbootdemo.repository.EventoRepository;
-import com.example.springbootdemo.repository.ReservaRepository;
+import com.madsoftware.proyecto_final.model.Reserva;
+import com.madsoftware.proyecto_final.repository.ClienteRepository;
+import com.madsoftware.proyecto_final.repository.EventoRepository;
+import com.madsoftware.proyecto_final.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
