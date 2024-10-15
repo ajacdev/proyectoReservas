@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Reserva</title>
+</head>
+<body>
+    <h1>Nueva Reserva</h1>
+    <form th:action="@{/reserva}" th:object="${reserva}" method="post">
+        <label for="cliente">Cliente</label>
+        <select id="cliente" th:field="*{cliente}">
+            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}">Cliente</option>
+        </select>
+        <label for="evento">Evento</label>
+        <select id="evento" th:field="*{evento}">
+            <option th:each="evento : ${eventos}" th:value="${evento.id}" th:text="${evento.nombre}">Evento</option>
+        </select>
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" th:field="*{fecha}" />
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
