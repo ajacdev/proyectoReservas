@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Proyecto Final</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Aplicación de Gestión de Eventos</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/cliente}">Clientes</a></li>
+                <li><a th:href="@{/reserva}">Reservas</a></li>
+                <li><a th:href="@{/evento}">Eventos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Opciones disponibles</h2>
+        <p>Utiliza el menú para navegar a las diferentes secciones de la aplicación.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Proyecto Final</p>
+    </footer>
+</body>
+</html>

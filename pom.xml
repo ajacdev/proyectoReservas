@@ -1,59 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.madsoftware</groupId>
 	<artifactId>proyecto-final</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>proyecto-final</name>
 	<description>Demo project for Spring Boot</description>
-	<url/>
+	<url />
 	<licenses>
-		<license/>
+		<license />
 	</licenses>
 	<developers>
-		<developer/>
+		<developer />
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection />
+		<developerConnection />
+		<tag />
+		<url />
 	</scm>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 
-	    <dependency>
-        <groupId>javax.persistence</groupId>
-        <artifactId>javax.persistence-api</artifactId>
-        <version>2.2</version>
-    </dependency>
+		<!-- <dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>-->
 
-    <!-- Hibernate (implementación de JPA) -->
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>5.4.32.Final</version> <!-- Puedes ajustar la versión según tu necesidad -->
-    </dependency>
+		<!-- Hibernate (implementación de JPA) -->
+		<!--<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.32.Final</version>  Puedes ajustar la versión según tu necesidad 
+		</dependency> -->
 
-    <!-- Dependencia de H2 para la base de datos embebida (opcional, para pruebas) -->
-    <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <scope>runtime</scope>
-    </dependency>
+		<!-- Dependencia de H2 para la base de datos embebida (opcional, para pruebas) -->
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -70,10 +72,10 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -88,15 +90,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.1.2184</version>
-            </plugin>
+			<!--<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.9.1.2184</version>
+			</plugin>-->
 		</plugins>
 	</build>
 	<repositories>
-        <!--<repository>
+		<!--<repository>
             <id>td-maven-repo</id>
             <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
             <releases>
@@ -110,15 +112,15 @@
 			<id>p-reservas</id>
 			<url>https://pkgs.dev.azure.com/alvarojuica/proyecto-reservas/_packaging/p-reservas/maven/v1</url>
 			<releases>
-			  <enabled>true</enabled>
+				<enabled>true</enabled>
 			</releases>
 			<snapshots>
-			  <enabled>true</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-    </repositories>
-    <distributionManagement>
-        <!--<repository>
+	</repositories>
+	<distributionManagement>
+		<!--<repository>
             <id>td-maven-repo</id>
             <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
         </repository>
@@ -130,12 +132,11 @@
 			<id>p-reservas</id>
 			<url>https://pkgs.dev.azure.com/alvarojuica/proyecto-reservas/_packaging/p-reservas/maven/v1</url>
 			<releases>
-			  <enabled>true</enabled>
+				<enabled>true</enabled>
 			</releases>
 			<snapshots>
-			  <enabled>true</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-    </distributionManagement>
-
+	</distributionManagement>
 </project>
