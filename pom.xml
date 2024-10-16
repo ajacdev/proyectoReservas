@@ -96,7 +96,7 @@
 		</plugins>
 	</build>
 	<repositories>
-        <repository>
+        <!--<repository>
             <id>td-maven-repo</id>
             <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
             <releases>
@@ -105,17 +105,37 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
+        </repository> -->
+		<repository>
+			<id>p-reservas</id>
+			<url>https://pkgs.dev.azure.com/alvarojuica/proyecto-reservas/_packaging/p-reservas/maven/v1</url>
+			<releases>
+			  <enabled>true</enabled>
+			</releases>
+			<snapshots>
+			  <enabled>true</enabled>
+			</snapshots>
+		</repository>
     </repositories>
     <distributionManagement>
-        <repository>
+        <!--<repository>
             <id>td-maven-repo</id>
             <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
         </repository>
         <snapshotRepository>
             <id>td-maven-repo</id>
             <url>http://192.168.1.116:8081/repository/td-maven-repo/</url>
-        </snapshotRepository>
+        </snapshotRepository>-->
+		<repository>
+			<id>p-reservas</id>
+			<url>https://pkgs.dev.azure.com/alvarojuica/proyecto-reservas/_packaging/p-reservas/maven/v1</url>
+			<releases>
+			  <enabled>true</enabled>
+			</releases>
+			<snapshots>
+			  <enabled>true</enabled>
+			</snapshots>
+		</repository>
     </distributionManagement>
 
 </project>
