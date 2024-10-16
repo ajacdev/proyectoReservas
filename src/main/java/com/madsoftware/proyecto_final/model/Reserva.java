@@ -1,14 +1,11 @@
 package com.madsoftware.proyecto_final.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDate;
 
-@Data
 @Entity
 public class Reserva {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
@@ -17,5 +14,5 @@ public class Reserva {
     @ManyToOne
     private Evento evento;
 
-    private LocalDate fecha;
+    // Getters y Setters
 }

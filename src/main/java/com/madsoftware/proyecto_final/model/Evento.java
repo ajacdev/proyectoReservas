@@ -1,13 +1,17 @@
 package com.madsoftware.proyecto_final.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import java.time.LocalDate;
 
-@Data
 @Entity
 public class Evento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String nombre;
+    private LocalDate fecha;
+
+    // Getters y Setters
 }
