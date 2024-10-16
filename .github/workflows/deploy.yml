@@ -25,9 +25,20 @@ jobs:
           AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
         run: |
           mkdir -p ~/.m2
-          echo "${{ secrets.MAVEN_SETTINGS }}" | \
-          sed "s|\${env.AZURE_DEVOPS_USERNAME}|$AZURE_DEVOPS_USERNAME|g" | \
-          sed "s|\${env.AZURE_DEVOPS_PAT}|$AZURE_DEVOPS_PAT|g" > ~/.m2/settings.xml
+          cat <<EOF > ~/.m2/settings.xml
+          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                                        https://maven.apache.org/xsd/settings-1.0.0.xsd">
+            <servers>
+              <server>
+                <id>p-reservas</id>
+                <username>${AZURE_DEVOPS_USERNAME}</username>
+                <password>${AZURE_DEVOPS_PAT}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
 
       - name: Build with Maven
         run: mvn clean install
