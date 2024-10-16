@@ -7,10 +7,9 @@
     <h1>Nuevo Evento</h1>
     <form th:action="@{/evento}" th:object="${evento}" method="post">
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" th:field="*{nombre}" />
-        <label for="descripcion">Descripción</label>
-        <input type="text" id="descripcion" th:field="*{descripcion}" />
+        <input type="text" id="nombre" th:field="*{nombre}" required>
         <button type="submit">Guardar</button>
     </form>
+    <a href="/evento">Volver a la lista de eventos</a>
 </body>
 </html>

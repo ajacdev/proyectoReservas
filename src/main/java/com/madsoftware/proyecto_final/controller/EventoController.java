@@ -2,33 +2,35 @@ package com.madsoftware.proyecto_final.controller;
 
 import com.madsoftware.proyecto_final.model.Evento;
 import com.madsoftware.proyecto_final.repository.EventoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/evento")
 public class EventoController {
 
-    @Autowired
-    private EventoRepository eventoRepository;
+    private final EventoRepository eventoRepository;
 
-    @GetMapping("/eventos")
-    public String listEventos(Model model) {
-        model.addAttribute("eventos", eventoRepository.findAll());
-        return "eventos";
+    public EventoController(EventoRepository eventoRepository) {
+        this.eventoRepository = eventoRepository;
     }
 
-    @GetMapping("/evento/new")
-    public String newEvento(Model model) {
+    @GetMapping
+    public String listarEventos(Model model) {
+        model.addAttribute("eventos", eventoRepository.findAll());
+        return "evento-list";
+    }
+
+    @GetMapping("/form")
+    public String mostrarFormulario(Model model) {
         model.addAttribute("evento", new Evento());
         return "evento-form";
     }
 
-    @PostMapping("/evento")
-    public String saveEvento(Evento evento) {
+    @PostMapping
+    public String guardarEvento(@ModelAttribute Evento evento) {
         eventoRepository.save(evento);
-        return "redirect:/eventos";
+        return "redirect:/evento";
     }
 }

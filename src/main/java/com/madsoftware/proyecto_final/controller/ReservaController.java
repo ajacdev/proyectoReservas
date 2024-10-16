@@ -1,44 +1,49 @@
 package com.madsoftware.proyecto_final.controller;
 
+import com.madsoftware.proyecto_final.model.Cliente;
+import com.madsoftware.proyecto_final.model.Evento;
 import com.madsoftware.proyecto_final.model.Reserva;
 import com.madsoftware.proyecto_final.repository.ClienteRepository;
 import com.madsoftware.proyecto_final.repository.EventoRepository;
 import com.madsoftware.proyecto_final.repository.ReservaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @Controller
+@RequestMapping("/reserva")
 public class ReservaController {
 
-    @Autowired
-    private ReservaRepository reservaRepository;
+    private final ReservaRepository reservaRepository;
+    private final ClienteRepository clienteRepository;
+    private final EventoRepository eventoRepository;
 
-    @Autowired
-    private ClienteRepository clienteRepository;
-
-    @Autowired
-    private EventoRepository eventoRepository;
-
-    @GetMapping("/reservas")
-    public String listReservas(Model model) {
-        model.addAttribute("reservas", reservaRepository.findAll());
-        return "reservas";
+    public ReservaController(ReservaRepository reservaRepository, ClienteRepository clienteRepository, EventoRepository eventoRepository) {
+        this.reservaRepository = reservaRepository;
+        this.clienteRepository = clienteRepository;
+        this.eventoRepository = eventoRepository;
     }
 
-    @GetMapping("/reserva/new")
-    public String newReserva(Model model) {
+    @GetMapping
+    public String listarReservas(Model model) {
+        model.addAttribute("reservas", reservaRepository.findAll());
+        return "reserva-list";
+    }
+
+    @GetMapping("/form")
+    public String mostrarFormulario(Model model) {
         model.addAttribute("reserva", new Reserva());
         model.addAttribute("clientes", clienteRepository.findAll());
         model.addAttribute("eventos", eventoRepository.findAll());
         return "reserva-form";
     }
 
-    @PostMapping("/reserva")
-    public String saveReserva(Reserva reserva) {
+    @PostMapping
+    public String guardarReserva(@ModelAttribute Reserva reserva) {
+        reserva.setFecha(LocalDate.now());
         reservaRepository.save(reserva);
-        return "redirect:/reservas";
+        return "redirect:/reserva";
     }
 }
