@@ -20,15 +20,17 @@ jobs:
           distribution: 'temurin'
 
       - name: Configure Maven settings
+        env:
+          AZURE_DEVOPS_USERNAME: ${{ secrets.AZURE_DEVOPS_USERNAME }}
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
         run: |
           mkdir -p ~/.m2
-          echo "${{ secrets.MAVEN_SETTINGS }}"  | base64 --decode > ~/.m2/settings.xml
+          echo "${{ secrets.MAVEN_SETTINGS }}" | \
+          sed "s|\${env.AZURE_DEVOPS_USERNAME}|$AZURE_DEVOPS_USERNAME|g" | \
+          sed "s|\${env.AZURE_DEVOPS_PAT}|$AZURE_DEVOPS_PAT|g" > ~/.m2/settings.xml
 
       - name: Build with Maven
         run: mvn clean install
 
       - name: Publish WAR to Azure Artifacts
-        env:
-          AZURE_DEVOPS_USERNAME: ${{ secrets.AZURE_DEVOPS_USERNAME }}
-          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
         run: mvn deploy
