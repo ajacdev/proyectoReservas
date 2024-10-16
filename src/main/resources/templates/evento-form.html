@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Nuevo Evento</title>
+    <meta charset="UTF-8">
+    <title>Formulario Evento</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    <h1>Nuevo Evento</h1>
-    <form th:action="@{/evento}" th:object="${evento}" method="post">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" th:field="*{nombre}" required>
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="/evento">Volver a la lista de eventos</a>
+    <header>
+        <h1>Formulario de Evento</h1>
+    </header>
+    <main>
+        <form th:action="@{/evento}" th:object="${evento}" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" required />
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" th:field="*{fecha}" required />
+
+            <button type="submit">Guardar Evento</button>
+        </form>
+        <a href="/evento">Volver a la lista de Eventos</a>
+    </main>
 </body>
 </html>

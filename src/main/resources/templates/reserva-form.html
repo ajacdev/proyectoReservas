@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Nueva Reserva</title>
+    <meta charset="UTF-8">
+    <title>Formulario Reserva</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    <h1>Nueva Reserva</h1>
-    <form th:action="@{/reserva}" th:object="${reserva}" method="post">
-        <label for="cliente">Cliente</label>
-        <select id="cliente" th:field="*{cliente}">
-            <option th:each="cliente : ${clientes}" th:value="${cliente}" th:text="${cliente.nombre}"></option>
-        </select>
-
-        <label for="evento">Evento</label>
-        <select id="evento" th:field="*{evento}">
-            <option th:each="evento : ${eventos}" th:value="${evento}" th:text="${evento.nombre}"></option>
-        </select>
-
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="/reserva">Volver a la lista de reservas</a>
+    <header>
+        <h1>Formulario de Reserva</h1>
+    </header>
+    <main>
+        <form action="#" th:action="@{/reserva}" method="post" th:object="${reserva}">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" th:field="*{cliente}" required>
+                <option th:each="cliente : ${clientes}" 
+                        th:value="${cliente.id}" 
+                        th:text="${cliente.nombre}"></option>
+            </select>
+        
+            <label for="evento">Evento:</label>
+            <select id="evento" th:field="*{evento}" required>
+                <option th:each="evento : ${eventos}" 
+                        th:value="${evento.id}" 
+                        th:text="${evento.nombre}"></option>
+            </select>
+        
+            <button type="submit">Reservar</button>
+        </form>        
+        <a href="/reserva">Volver a la lista de Reservas</a>
+    </main>
 </body>
 </html>
