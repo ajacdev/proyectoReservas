@@ -1,0 +1,38 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+steps:
+- checkout: self
+  fetchDepth: 0
+
+- task: SonarCloudPrepare@2
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'proyecto-reservas'
+    scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner,
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=alvarojuica_proyecto-reservas
+      sonar.projectName=proyecto-reservas
+- task: SonarCloudPublish@2
+  inputs:
+    pollingTimeoutSec: '300'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
