@@ -22,7 +22,7 @@ jobs:
       - name: Configure Maven settings
         run: |
           mkdir -p ~/.m2
-          echo "${{ secrets.MAVEN_SETTINGS }}" > ~/.m2/settings.xml
+          echo "${{ secrets.MAVEN_SETTINGS }}"  | base64 --decode > ~/.m2/settings.xml
 
       - name: Build with Maven
         run: mvn clean install
