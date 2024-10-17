@@ -45,6 +45,14 @@ jobs:
       
       - name: SonarCloud Scan
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=alvarojuica_proyecto-reservas
+
+      - name: SonarCloud Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+          -Dsonar.projectKey=alvarojuica_proyecto-reservas \
+          -Dsonar.organization=proyecto-reservas \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         
       - name: Publish WAR to Azure Artifacts
         run: mvn deploy
