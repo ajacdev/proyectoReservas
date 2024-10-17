@@ -47,7 +47,8 @@ jobs:
         run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=alvarojuica_proyecto-reservas \
           -Dsonar.organization=proyecto-reservas \
-          -Dsonar.login=3f736338adb79e687235e67ee611cc974764f539
+          -Dsonar.login=3f736338adb79e687235e67ee611cc974764f539 \
+          -Dsonar.branch.name=develop
         
       - name: Publish WAR to Azure Artifacts
         run: mvn deploy
