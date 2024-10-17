@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Gestión de Cliente - Centro de Eventos</title>
+    <title>Lista de Clientes - Centro de Eventos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
@@ -29,22 +29,30 @@
         </div>
     </nav>
     <div class="container mt-5">
-        <h1 th:text="${cliente.id == null} ? 'Nuevo Cliente' : 'Editar Cliente'"></h1>
-        <form th:action="@{/cliente}" th:object="${cliente}" method="post" class="needs-validation" novalidate>
-            <input type="hidden" th:field="*{id}">
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" th:field="*{email}" required>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="/cliente" class="btn btn-secondary">Cancelar</a>
-        </form>
+        <h1>Clientes</h1>
+        <a href="/cliente/form" class="btn btn-primary mb-3">Nuevo Cliente</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.nombre}"></td>
+                    <td th:text="${cliente.email}"></td>
+                    <td>
+                        <a th:href="@{/cliente/editar/{id}(id=${cliente.id})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/cliente/eliminar/{id}(id=${cliente.id})}" class="btn btn-sm btn-danger"
+                           onclick="return confirm('¿Estás seguro de que quieres eliminar este cliente?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

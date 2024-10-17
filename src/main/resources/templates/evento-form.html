@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Nuevo Evento</title>
+    <title>Gestión de Evento - Centro de Eventos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <h1>Nuevo Evento</h1>
-    <form th:action="@{/evento}" th:object="${evento}" method="post">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" th:field="*{nombre}" required>
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="/evento">Volver a la lista de eventos</a>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Centro de Eventos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/cliente}">Gestión de Clientes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/evento}">Gestión de Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/reserva}">Gestión de Reservas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 th:text="${evento.id == null} ? 'Nuevo Evento' : 'Editar Evento'"></h1>
+        <form th:action="@{/evento}" th:object="${evento}" method="post" class="needs-validation" novalidate>
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+            <div class="form-group">
+                <label for="capacidad">Capacidad</label>
+                <input type="number" class="form-control" id="capacidad" th:field="*{capacidad}" required min="1">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('capacidad')}" th:errors="*{capacidad}"></div>
+            </div>
+            <div class="form-group">
+                <label for="fechaHora">Fecha y Hora</label>
+                <input type="datetime-local" class="form-control" id="fechaHora" th:field="*{fechaHora}" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaHora')}" th:errors="*{fechaHora}"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/evento" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
