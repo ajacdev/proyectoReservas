@@ -48,12 +48,7 @@
 			<version>5.4.32.Final</version>  Puedes ajustar la versión según tu necesidad 
 		</dependency> -->
 
-		<!-- Dependencia de H2 para la base de datos embebida (opcional, para pruebas) -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -92,11 +87,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!--<plugin>
+			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.9.1.2184</version>
-			</plugin>-->
+				<version>4.0.0.4121</version>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
